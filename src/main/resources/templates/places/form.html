@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 
-<head th:replace="fragments/header::page_head('Admin Home')"></head>
+<head th:replace="fragments/header::page_head('Add Place')"></head>
 
 <body>
 <!-- Pre-loader start -->
@@ -37,17 +37,9 @@
 
                                                         <div class="col-sm-12 col-xl-3 m-b-30">
                                                             <h4 class="sub-title"></h4>
-                                                            <select name="select"
-                                                                    class="form-control form-control-primary">
-                                                                <option value="">tashkent</option>
-                                                                <option value="">andijon</option>
-                                                                <option value="">tashkent</option>
-                                                                <option value="">tashkent</option>
-                                                                <option value="">tashkent</option>
-                                                                <option value="">tashkent</option>
-                                                                <option value="">tashkent</option>
-                                                                th:each="regions :${region}"
-                                                                <!--                                                            th:each="region:${regions}"-->
+                                                            <select th:field="*{region}"  class="form-control form-control-primary">
+                                                                <option value="">Select Region</option>
+                                                                <option th:each="region: ${regions}" th:value="${region.id}">[[${region.name}]]</option>
                                                             </select>
                                                         </div>
                                                     </div>

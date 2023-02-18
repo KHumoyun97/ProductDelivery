@@ -1,7 +1,7 @@
-package uz.jahongir.admin.services;
+package uz.khumoyun.admin.service;
 
-import uz.jahongir.library.entities.Admin;
 
+import uz.khumoyun.persistencelibrary.entities.Admin;
 
 import java.util.List;
 

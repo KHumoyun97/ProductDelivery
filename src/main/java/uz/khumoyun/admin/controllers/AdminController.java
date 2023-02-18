@@ -1,4 +1,4 @@
-package uz.jahongir.admin.controllers;
+package uz.khumoyun.admin.controllers;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -6,9 +6,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import uz.jahongir.admin.services.AdminService;
-import uz.jahongir.library.entities.Admin;
-import uz.jahongir.library.entities.Region;
+import uz.khumoyun.admin.service.AdminService;
+import uz.khumoyun.persistencelibrary.entities.Admin;
 
 import java.util.List;
 
@@ -32,6 +31,7 @@ public class AdminController {
     public String add(Model model){
         System.out.println("Keldi 1 ");
         Admin admin=new Admin();
+  //      System.out.println(" User" +admin.getId());
         model.addAttribute("admin",admin);
         return "admins/form";
     }

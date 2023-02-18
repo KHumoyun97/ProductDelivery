@@ -1,7 +1,7 @@
-package uz.jahongir.admin.services;
+package uz.khumoyun.admin.service;
 
-import uz.jahongir.library.entities.Permission;
-import uz.jahongir.library.entities.Region;
+
+import uz.khumoyun.persistencelibrary.entities.Permission;
 
 import java.util.List;
 
@@ -9,4 +9,8 @@ public interface PermissionService {
     Permission save(Permission permission);
 
     List<Permission> findAll();
+
+    Permission findById(Long id);
+
+    void deleteById(Long id);
 }

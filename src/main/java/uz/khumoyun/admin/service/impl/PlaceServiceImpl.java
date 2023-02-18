@@ -1,10 +1,10 @@
-package uz.jahongir.admin.services.impl;
+package uz.khumoyun.admin.service.impl;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import uz.jahongir.admin.services.PlaceService;
-import uz.jahongir.library.entities.Place;
-import uz.jahongir.library.repositories.PlaceRepository;
+import uz.khumoyun.admin.service.PlaceService;
+import uz.khumoyun.persistencelibrary.entities.Place;
+import uz.khumoyun.persistencelibrary.repository.PlaceRepository;
 
 import java.util.List;
 

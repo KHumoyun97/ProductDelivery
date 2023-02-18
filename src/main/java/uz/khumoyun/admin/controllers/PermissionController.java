@@ -1,16 +1,15 @@
-package uz.jahongir.admin.controllers;
+package uz.khumoyun.admin.controllers;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import uz.jahongir.admin.services.PermissionService;
-import uz.jahongir.library.entities.Permission;
-import uz.jahongir.library.entities.Region;
+import org.springframework.validation.Errors;
+import org.springframework.web.bind.annotation.*;
+import uz.khumoyun.admin.service.PermissionService;
+import uz.khumoyun.persistencelibrary.entities.Permission;
 
-import java.util.List;
+import javax.validation.Valid;
+
 
 @Controller
 @RequestMapping("/permissions")
@@ -21,26 +20,46 @@ public class PermissionController {
 
     @GetMapping()
     public String places(Model model) {
-        List<Permission> permissions = permissionService.findAll();
+        model.addAttribute( "permissions", permissionService.findAll());
+        return "permissions/list";
+    }
+    @GetMapping("/create")
+    public String create(Model model) {
 
-        System.out.println(permissions);
-        model.addAttribute("permissions", permissions);
-        System.out.println(model);
-        return "permissions/permissions";
+        model.addAttribute("permission", new Permission());
+        return "permissions/form";
     }
 
-    @GetMapping("/add")
-    public String add(Model model) {
-        Permission permission = new Permission();
-        model.addAttribute("permission", permission);
+    @GetMapping("/update/{id}")
+    public String update(@PathVariable Long id,  Model model) {
+        System.out.println(id);
+        Permission permission=permissionService.findById(id);
+        model.addAttribute("permission",permission);
         return "permissions/form";
     }
 
 
-    @PostMapping("/add")
-    public String save(Permission permission, Model model) {
+    @PostMapping ("/save")
+    public String save(@Valid Permission permission, Errors errors, Model model) {
+        System.out.println(errors.hasErrors());
+        System.out.println(errors.getAllErrors());
+        if (errors.hasErrors()){
+            return "permissions/form";
+        }
+
+        System.out.println(permission);
         permissionService.save(permission);
         return "redirect:/permissions";
     }
+
+    @GetMapping("/delete/{id}")
+    @ResponseBody
+    public boolean delete(@PathVariable Long id) {
+        System.out.println(id);
+        permissionService.deleteById(id);
+        System.out.println("deleted");
+        return true;
+    }
+
 
 }

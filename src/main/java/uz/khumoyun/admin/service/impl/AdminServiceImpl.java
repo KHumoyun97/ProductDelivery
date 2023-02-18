@@ -1,11 +1,10 @@
-package uz.jahongir.admin.services.impl;
+package uz.khumoyun.admin.service.impl;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import uz.jahongir.admin.services.AdminService;
-import uz.jahongir.library.entities.Admin;
-import uz.jahongir.library.entities.Region;
-import uz.jahongir.library.repositories.AdminRepository;
+import uz.khumoyun.admin.service.AdminService;
+import uz.khumoyun.persistencelibrary.entities.Admin;
+import uz.khumoyun.persistencelibrary.repository.AdminRepository;
 
 import java.util.List;
 

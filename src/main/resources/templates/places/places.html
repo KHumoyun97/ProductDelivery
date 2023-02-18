@@ -39,14 +39,19 @@
                                                 <thead>
                                                 <tr>
                                                     <th>Id</th>
-                                                    <th>Name</th>
                                                     <th>Region</th>
+                                                    <th>Name</th>
+                                                    <th>Created At</th>
+                                                    <th>Actions</th>
                                                 </tr>
                                                 </thead>
                                                 <tbody>
                                                 <tr th:each="place: ${places}">
                                                     <th scope="row">[[${place.id}]]</th>
+                                                    <td>[[${place.region.name}]]</td>
                                                     <td>[[${place.name}]]</td>
+                                                    <td>[[${place.createdAt}]]</td>
+                                                    <td></td>
                                                 </tr>
 
 
